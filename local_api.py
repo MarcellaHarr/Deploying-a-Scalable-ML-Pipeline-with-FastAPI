@@ -1,15 +1,21 @@
+# == Import libraries ==
 import json
 
 import requests
 
-# TODO: send a GET using the URL http://127.0.0.1:8000
-r = None # Your code here
+# == send GET request for the root endpoint ==
+r = requests.get(
+    "http://127.0.0.1:8000"
+)
 
-# TODO: print the status code
-# print()
-# TODO: print the welcome message
-# print()
-
+# == print status code ==
+print(
+    f"GET Status Code: {r.status_code}"
+)
+# == print welcome message ==
+print(
+    f"Message: {r.json()['message']}"
+)
 
 
 data = {
@@ -29,10 +35,17 @@ data = {
     "native-country": "United-States",
 }
 
-# TODO: send a POST using the data above
-r = None # Your code here
+# == send POST request for the data endpoint ==
+r = requests.post(
+    "http://127.0.0.1:8000/data/",
+    data=json.dumps(data)
+)
 
-# TODO: print the status code
-# print()
-# TODO: print the result
-# print()
+# == print status code ==
+print(
+    f"POST Status Code: {r.status_code}"
+)
+# == print prediction result ==
+print(
+    f"Predictive Result: {r.json()['result']}"
+)
